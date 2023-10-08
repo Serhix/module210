@@ -17,7 +17,7 @@ class AuthorForm(ModelForm):
     fullname = CharField(min_length=8, max_length=50, required=True,
                          widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Full name"}))
     born_date = DateField(required=True,
-                          widget=forms.SelectDateWidget(years=range(1930, date.today().year)))
+                          widget=forms.SelectDateWidget(years=range(1, date.today().year)))
     born_location = CharField(min_length=5, max_length=50, required=True,
                               widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Born location"}))
     description = CharField(min_length=10, max_length=5000, required=True,

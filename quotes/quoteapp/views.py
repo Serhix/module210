@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from .forms import TagForm, AuthorForm, QuoteForm
-from .models import Tag, Author
+from .models import Tag, Author, Quote
 
 # Create your views here.
 
 
 def main(request):
-    return render(request, 'quoteapp/index.html')
+    quotes = Quote.objects.all()
+    authors = Author.objects.all()
+
+    return render(request, 'quoteapp/index.html', {"quotes": quotes})
 
 
 def tag(request):
@@ -39,7 +42,6 @@ def quote(request):
 
     if request.method == 'POST':
         form = QuoteForm(request.POST)
-        print(form)
         if form.is_valid():
             new_quote = form.save(commit=False)  # Зберігаємо форму без збереження в базу даних
             new_quote.autor = Author.objects.get(fullname=request.POST['author'])

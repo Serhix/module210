@@ -2,7 +2,19 @@
 
 {% block content %}
 
-There will be quotes here!
+{% for quote in quotes %}
+
+<div class="card border-primary mb-3">
+    <div class="card-body">
+        <p class="card-text"> {{ quote.quote }} </p>
+        <span> Author: <a href="#" >{{ quote.author }}</a></span>
+        <h1></h1>
+        <a href="#" >Another link</a>
+    </div>
+</div>
+
+
+{% endfor %}
 
 {% endblock %}
 
