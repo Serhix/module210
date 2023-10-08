@@ -8,8 +8,9 @@ from .models import Tag, Author, Quote
 def main(request):
     quotes = Quote.objects.all()
     authors = Author.objects.all()
+    tags = Tag.objects.all()
 
-    return render(request, 'quoteapp/index.html', {"quotes": quotes})
+    return render(request, 'quoteapp/index.html', {"quotes": quotes, "tag": tags})
 
 
 def tag(request):

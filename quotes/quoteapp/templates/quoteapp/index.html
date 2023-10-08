@@ -6,10 +6,15 @@
 
 <div class="card border-primary mb-3">
     <div class="card-body">
+        <blockquote class="blockquote">
         <p class="card-text"> {{ quote.quote }} </p>
-        <span> Author: <a href="#" >{{ quote.author }}</a></span>
-        <h1></h1>
-        <a href="#" >Another link</a>
+        <span> Author: <a href="#">{{ quote.author.fullname }}</a></span>
+        </blockquote>
+        <p class="card-text">Tags:
+            {% for tag in quote.tags.all %}
+            <a href="#" class="badge bg-primary">{{ tag.name }}</a>
+            {% endfor %}
+        </p>
     </div>
 </div>
 
