@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10">
-            {% for quote in page_obj %}
+            {% for quote in quotes %}
             <div class="card border-primary mb-3">
                 <div class="card-body">
                     <blockquote class="blockquote">
@@ -21,20 +21,6 @@
                 </div>
             </div>
             {% endfor %}
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-
-        {% if page_obj.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
-             <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
-        {% endif %}
-
-            <li class="page-item"><a class="page-link"> Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a></li>
-
-        {% if page_obj.has_next %}
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
-            <li class="page-item"><a  class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
-        {% endif %}
         </div>
         <div class="col-md-2">
             <div class="card border-primary mb-3">
@@ -42,8 +28,7 @@
                     <h2>Top Ten Tags</h2>
                     <ul>
                         {% for tag in top_tags %}
-                        <a href="{% url 'quoteapp:quotes_by_tag' tag.name %}" class="badge bg-primary">{{ tag.name }}
-                            ({{ tag.quote_count }})</a>
+                        <a href="{% url 'quoteapp:quotes_by_tag' tag.name %}" class="badge bg-primary">{{ tag.name }} ({{ tag.quote_count }})</a>
                         {% endfor %}
                     </ul>
                 </div>
@@ -54,4 +39,3 @@
 
 
 {% endblock %}
-
