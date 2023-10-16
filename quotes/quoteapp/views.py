@@ -17,7 +17,6 @@ def main(request):
     paginator = Paginator(quotes, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    # authors = Author.objects.all()
     tags = Tag.objects.all()
     tag_counts = Tag.objects.annotate(quote_count=Count('quote')).order_by('-quote_count')[:10]
     return render(request, 'quoteapp/index.html', {'page_obj': page_obj, "quotes": quotes, "tag": tags, 'author': author, 'top_tags': tag_counts})
