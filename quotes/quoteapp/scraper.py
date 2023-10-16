@@ -51,13 +51,6 @@ def parse_author_page(url):
         born_date = datetime.strptime(born_date, '%B %d, %Y').strftime('%Y-%m-%d')
         born_location = author_details.find('span', class_='author-born-location').get_text(strip=True)
         description = author_details.find('div', class_='author-description').get_text(strip=True)
-        # author, created = Author(
-        #     fullname=fullname,
-        #     born_date=born_date,
-        #     born_location=born_location,
-        #     description=description
-        # ).save()
-        # return author
 
         if Author.objects.filter(fullname=fullname).exists():
             return Author.objects.filter(fullname=fullname).first()
